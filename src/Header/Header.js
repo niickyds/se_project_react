@@ -1,13 +1,11 @@
 import "./Header.css";
 
 const Header = () => {
-  console.log("header");
-
   return (
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src="/images/logo.svg" alt="Logo" />
+          <img src={require("../Images/Logo.svg").default} alt="Logo" />
         </div>
         <div>Date</div>
       </div>
@@ -15,9 +13,9 @@ const Header = () => {
         <div>
           <button type="text">Add New Clothes</button>
         </div>
-        <div>Name</div>
+        <div>Terrence Tegegne</div>
         <div>
-          <img src="/images/Avatar.svg" alt="Avatar" />
+          <img src={require("../Images/Avatar.svg").default} alt="Avatar" />
         </div>
       </div>
     </header>
