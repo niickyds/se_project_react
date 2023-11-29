@@ -39,62 +39,62 @@ export const defaultClothingItems = [
 
 export const weatherOptions = [
   {
-    url: require("../Images/Weather/Day/Sunny.svg").default,
+    url: require("../images/Weather/Day/Sunny.svg").default,
     day: true,
     type: "sunny",
   },
   {
-    url: require("../Images/Weather/Day/Cloudy.svg").default,
+    url: require("../images/Weather/Day/Cloudy.svg").default,
     day: true,
     type: "cloudy",
   },
   {
-    url: require("../Images/Weather/Day/Fog.svg").default,
+    url: require("../images/Weather/Day/Fog.svg").default,
     day: true,
     type: "fog",
   },
   {
-    url: require("../Images/Weather/Day/Rain.svg").default,
+    url: require("../images/Weather/Day/Rain.svg").default,
     day: true,
     type: "rain",
   },
   {
-    url: require("../Images/Weather/Day/Snow.svg").default,
+    url: require("../images/Weather/Day/Snow.svg").default,
     day: true,
     type: "snow",
   },
   {
-    url: require("../Images/Weather/Day/Storm.svg").default,
+    url: require("../images/Weather/Day/Storm.svg").default,
     day: true,
     type: "storm",
   },
   {
-    url: require("../Images/Weather/Night/Moon.svg").default,
+    url: require("../images/Weather/Night/Moon.svg").default,
     day: false,
     type: "moon",
   },
   {
-    url: require("../Images/Weather/Night/Cloudy.svg").default,
+    url: require("../images/Weather/Night/Cloudy.svg").default,
     day: false,
     type: "cloudy",
   },
   {
-    url: require("../Images/Weather/Night/Fog.svg").default,
+    url: require("../images/Weather/Night/Fog.svg").default,
     day: false,
     type: "fog",
   },
   {
-    url: require("../Images/Weather/Night/Rain.svg").default,
+    url: require("../images/Weather/Night/Rain.svg").default,
     day: false,
     type: "rain",
   },
   {
-    url: require("../Images/Weather/Night/Snow.svg").default,
+    url: require("../images/Weather/Night/Snow.svg").default,
     day: false,
     type: "snow",
   },
   {
-    url: require("../Images/Weather/Night/Storm.svg").default,
+    url: require("../images/Weather/Night/Storm.svg").default,
     day: false,
     type: "storm",
   },
