@@ -1,5 +1,5 @@
 // import logo from "./logo.svg";
-// import "./App.css";
+import "./App.css";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
@@ -56,7 +56,7 @@ function App() {
           onClose={handleCloseModal}
           handleClick={handleClick}
         >
-          <label>
+          <label className="modal__name-input">
             Name
             <input
               type="text"
@@ -64,30 +64,47 @@ function App() {
               minlenth="1"
               maxLength="30"
               placeholder="Name"
+              className="modal__name-submit"
             />
           </label>
-          <label>
+          <label className="modal__image-input">
             Image
             <input
               type="url"
               name="link"
               minlenth="1"
               placeholder="Image URL"
+              className="modal__image-submit"
             />
           </label>
-          <p>Select the weather type:</p>
+          <p className="weather__text">Select the weather type:</p>
           <div>
-            <div>
-              <input type="radio" id="hot" value="hot" />
-              <label>Hot</label>
+            <div className="radio__input">
+              <input
+                type="radio"
+                id="hot"
+                value="hot"
+                className="radio__button"
+              />
+              <label for="hot">Hot</label>
             </div>
-            <div>
-              <input type="radio" id="warm" value="warm" />
-              <label>Warm</label>
+            <div className="radio__input">
+              <input
+                type="radio"
+                id="warm"
+                value="warm"
+                className="radio__button"
+              />
+              <label for="warm">Warm</label>
             </div>
-            <div>
-              <input type="radio" id="cold" value="cold" />
-              <label>Cold</label>
+            <div className="radio__input">
+              <input
+                type="radio"
+                id="cold"
+                value="cold"
+                className="radio__button"
+              />
+              <label for="cold">Cold</label>
             </div>
           </div>
         </ModalWithForm>
