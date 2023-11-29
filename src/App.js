@@ -21,6 +21,7 @@ function App() {
   };
 
   const handleSelectedCard = (card) => {
+    setActiveModal("preview");
     setSelectedCard(card);
   };
 
@@ -68,8 +69,9 @@ function App() {
           </div>
         </ModalWithForm>
       )}
-      {activeModal === "preview" && <ItemModal />}
-      {/* {activeModal === 'preview'} */}
+      {activeModal === "preview" && (
+        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+      )}
     </div>
   );
 }
