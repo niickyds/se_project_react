@@ -46,7 +46,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div onKeyDown={handleKeydown}>
       <Header onCreateModal={handleCreateModal} />
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
@@ -110,7 +110,11 @@ function App() {
         </ModalWithForm>
       )}
       {activeModal === "preview" && (
-        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+        <ItemModal
+          selectedCard={selectedCard}
+          onClose={handleCloseModal}
+          handleClick={handleClick}
+        />
       )}
     </div>
   );
