@@ -1,12 +1,6 @@
 import "./ModalWithForm.css";
 
-const ModalWithForm = ({
-  children,
-  buttonText = "Add Garment",
-  title,
-  onClose,
-  name,
-}) => {
+const ModalWithForm = ({ children, buttonText, title, onClose, name }) => {
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal__content">
@@ -15,7 +9,7 @@ const ModalWithForm = ({
         <form>
           {children}
           <button type="submit" className="modal__submit">
-            {buttonText}
+            {(buttonText = "Add Garment")}
           </button>
         </form>
       </div>

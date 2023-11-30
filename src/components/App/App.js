@@ -27,10 +27,12 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const temperature = parseWeatherData(data);
-      setTemp(temperature);
-    });
+    getForecastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
+      })
+      .catch(console.error);
   }, []);
 
   const handleClick = (evt) => {
@@ -39,14 +41,26 @@ function App() {
     }
   };
 
-  const handleKeydown = (evt) => {
-    if (evt.key === "Escape" && activeModal !== "") {
-      setActiveModal("");
-    }
-  };
+  // const handleKeydown = (evt) => {
+  //   if (evt.key === "Escape" && activeModal !== "") {
+  //     setActiveModal("");
+  //   }
+  // };
+
+  useEffect(() => {
+    const handleKeyDown = (evt) => {
+      if (evt.key === "Escape" && activeModal !== "") {
+        setActiveModal("");
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeModal]);
 
   return (
-    <div onKeyDown={handleKeydown}>
+    <div>
       <Header onCreateModal={handleCreateModal} />
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
@@ -85,26 +99,29 @@ function App() {
                 id="hot"
                 value="hot"
                 className="radio__button"
+                name="weather-radio-button"
               />
-              <label for="hot">Hot</label>
+              <label htmlFor="hot">Hot</label>
             </div>
             <div className="radio__input">
               <input
                 type="radio"
                 id="warm"
                 value="warm"
+                name="weather-radio-button"
                 className="radio__button"
               />
-              <label for="warm">Warm</label>
+              <label htmlFor="warm">Warm</label>
             </div>
             <div className="radio__input">
               <input
                 type="radio"
                 id="cold"
                 value="cold"
+                name="weather-radio-button"
                 className="radio__button"
               />
-              <label for="cold">Cold</label>
+              <label htmlFor="cold">Cold</label>
             </div>
           </div>
         </ModalWithForm>
