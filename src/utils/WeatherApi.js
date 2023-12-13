@@ -16,15 +16,15 @@ const processServerResponse = (res) => {
   return Promise.reject(`Error: ${res.status}`);
 };
 
-// then(processServerResponse);
-// if (res.ok) {
-//   return res.json();
-// } else {
-//   return Promise.reject(`Error: ${res.status}`);
-// }
-
 export const parseWeatherData = (data) => {
   const main = data.main;
   const temp = main && main.temp;
-  return Math.ceil(temp);
+  const weather = {
+    temperature: {
+      F: Math.round(temp),
+      C: Math.round(((temp - 32) * 5) / 9),
+    },
+  };
+  console.log(weather);
+  return weather;
 };
