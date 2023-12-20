@@ -9,12 +9,21 @@ import { useEffect, useState } from "react";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import Profile from "../Profile/Profile";
+import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
+import { getItems, postItems, deleteItems } from "../../utils/api";
+// use getItems in useEffect
+// use postItems in onAddItem
+// use deleteItems in handleDeleteCard
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
+  // need 2 define setClothingItems in a handleDeleteCard function
+  // Then add it into the onAddItem and useEffect()
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -75,7 +84,13 @@ function App() {
           <Route exact path="/">
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
-          <Route path="/profile">Profile</Route>
+          <Route path="/profile">
+            <Profile
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
+              onCreate={handleCreateModal}
+            />
+          </Route>
         </Switch>
         <Footer />
         {activeModal === "create" && (
@@ -91,6 +106,13 @@ function App() {
             selectedCard={selectedCard}
             onClose={handleCloseModal}
             handleClick={handleClick}
+          />
+        )}
+        {activeModal === "delete" && (
+          <DeleteItemModal
+            onClose={handleCloseModal}
+            // deleteCard={handleDeleteCard}
+            // write handleDeleteCard. Use id to delete
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
