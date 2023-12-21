@@ -12,9 +12,6 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 import { getItems, postItems, deleteItems } from "../../utils/api";
-// use getItems in useEffect
-// use postItems in onAddItem
-// use deleteItems in handleDeleteCard
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -22,8 +19,6 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  // need 2 define setClothingItems in a handleDeleteCard function
-  // Then add it into the onAddItem and useEffect()
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -53,13 +48,44 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    getItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((error) => {
+        console.error(`An error occurred: ${error}`);
+      });
+  });
+
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
+  const handleDeleteCard = () => {
+    try {
+      deleteItems(selectedCard.id);
+      console.log(selectedCard.id);
+      setClothingItems((prevItems) =>
+        prevItems.filter((item) => item.id !== selectedCard.id)
+      );
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
   const onAddItem = (values) => {
-    console.log(values);
+    try {
+      const res = postItems(values);
+      console.log(res);
+      setClothingItems((prevItems) => [res, ...prevItems]);
+      console.log(res);
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error on add item:", error);
+    }
   };
 
   useEffect(() => {
@@ -111,8 +137,7 @@ function App() {
         {activeModal === "delete" && (
           <DeleteItemModal
             onClose={handleCloseModal}
-            // deleteCard={handleDeleteCard}
-            // write handleDeleteCard. Use id to delete
+            deleteCard={handleDeleteCard}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>

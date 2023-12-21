@@ -20,9 +20,15 @@ const AddItemModal = ({ handleCloseModal, handleClick, onAddItem, isOpen }) => {
     setWeatherType(e.target.value);
   };
 
+  const generateUniqueId = () => {
+    const timeStamp = new Date().getTime();
+    const randomNumber = Math.random().toString(20).substring(1, 4);
+    return `${timeStamp}-${randomNumber}`;
+  };
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onAddItem({ name, link, weatherType });
+    onAddItem({ name, link, weatherType, id: generateUniqueId() });
   };
 
   return (
