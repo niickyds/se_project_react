@@ -33,7 +33,3 @@ export function deleteItems(id) {
     },
   }).then(processServerResponse);
 }
-
-export function request(url, options) {
-  return fetch(url, options).then(processServerResponse);
-}

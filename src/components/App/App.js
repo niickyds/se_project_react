@@ -51,7 +51,7 @@ function App() {
       );
       handleCloseModal();
     } catch (error) {
-      console.error("Error:", error);
+      console.error(error);
     }
   };
 
@@ -59,11 +59,11 @@ function App() {
     try {
       const res = postItems(values);
       console.log(res);
-      setClothingItems((prevItems) => [res, ...prevItems]);
+      setClothingItems((items) => [res, ...items]);
       console.log(res);
       handleCloseModal();
     } catch (error) {
-      console.error("Error on add item:", error);
+      console.error(error);
     }
   };
 
@@ -88,7 +88,7 @@ function App() {
         setClothingItems(items);
       })
       .catch((error) => {
-        console.error(`An error occurred: ${error}`);
+        console.error(error);
       });
   });
 
