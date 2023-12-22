@@ -42,7 +42,7 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const handleDeleteCard = () => {
+  const handleDeleteCard = async () => {
     try {
       deleteItems(selectedCard._id);
       console.log(selectedCard._id);
@@ -55,12 +55,12 @@ function App() {
     }
   };
 
-  const onAddItem = (values) => {
+  const onAddItem = async (values) => {
     try {
       const res = postItems(values);
-      // console.log(res);
+      console.log(res);
       setClothingItems((prevItems) => [res, ...prevItems]);
-      // console.log(res);
+      console.log(res);
       handleCloseModal();
     } catch (error) {
       console.error("Error on add item:", error);
