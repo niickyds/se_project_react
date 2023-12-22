@@ -19,6 +19,7 @@
   width: 100%;
   border-radius: 20px;
   padding: 28px 28px 36px 28px;
+  /* font-family: ; */
 }
 
 .modal__close {
@@ -60,4 +61,92 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
+}
+
+.modal__delete-button_container {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  bottom: 118px;
+}
+
+.modal__delete-button {
+  color: #ff4d00;
+  background: none;
+  border: none;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+/* Delete modal css */
+.delete__modal-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  width: 30em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.delete__modal {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  height: 280px;
+  width: 670px;
+}
+
+.delete__modal-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete__modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete__modal-content {
+  padding: 20px 0 50px 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.delete__modal-text {
+  margin: 0;
+}
+
+.delete__modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.delete_btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.delete_btn-confirm {
+  color: #ff4d00;
+  padding-bottom: 20px;
 }

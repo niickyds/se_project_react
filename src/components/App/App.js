@@ -33,6 +33,40 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleDeleteOpenModal = () => {
+    setActiveModal("delete");
+  };
+
+  const handleToggleSwitchChange = () => {
+    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+  };
+
+  const handleDeleteCard = () => {
+    try {
+      deleteItems(selectedCard.id);
+      console.log(selectedCard.id);
+      setClothingItems((prevItems) =>
+        prevItems.filter((item) => item.id !== selectedCard.id)
+      );
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const onAddItem = (values) => {
+    try {
+      const res = postItems(values);
+      // console.log(res);
+      setClothingItems((prevItems) => [res, ...prevItems]);
+      // console.log(res);
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error on add item:", error);
+    }
+  };
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -57,36 +91,6 @@ function App() {
         console.error(`An error occurred: ${error}`);
       });
   });
-
-  const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
-  };
-
-  const handleDeleteCard = () => {
-    try {
-      deleteItems(selectedCard.id);
-      console.log(selectedCard.id);
-      setClothingItems((prevItems) =>
-        prevItems.filter((item) => item.id !== selectedCard.id)
-      );
-      handleCloseModal();
-    } catch (error) {
-      console.error("Error deleting item:", error);
-    }
-  };
-
-  const onAddItem = (values) => {
-    try {
-      const res = postItems(values);
-      console.log(res);
-      setClothingItems((prevItems) => [res, ...prevItems]);
-      console.log(res);
-      handleCloseModal();
-    } catch (error) {
-      console.error("Error on add item:", error);
-    }
-  };
 
   useEffect(() => {
     const handleKeyDown = (evt) => {
@@ -132,6 +136,7 @@ function App() {
             selectedCard={selectedCard}
             onClose={handleCloseModal}
             handleClick={handleClick}
+            onClick={handleDeleteOpenModal}
           />
         )}
         {activeModal === "delete" && (

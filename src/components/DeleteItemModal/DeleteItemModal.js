@@ -3,7 +3,7 @@ import "../ModalWithForm/ModalWithForm.css";
 
 const DeleteItemModal = ({ onClose, deleteCard }) => {
   return (
-    <div className={`modal delete`}>
+    <div className={"modal delete"}>
       <div className="delete__modal-container">
         <div className="delete__modal">
           <div className="delete__modal-header">
@@ -23,7 +23,7 @@ const DeleteItemModal = ({ onClose, deleteCard }) => {
               className="delete_btn delete_btn-confirm"
               onClick={deleteCard}
             >
-              Yes
+              Yes, delete item
             </button>
             <button className="delete_btn delete_btn-cancel" onClick={onClose}>
               Cancel

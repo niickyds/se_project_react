@@ -1,20 +1,17 @@
 import { processServerResponse } from "./WeatherApi";
 
-export const baseUrl = "http://localhost:3000";
+export const baseUrl = "http://localhost:3001";
 
 export function getItems() {
-  // write fetch based return statement (return fetch())
-  return fetch(`${baseUrl}/profile`, {
+  return fetch(`${baseUrl}/items`, {
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `Bearer ${localStorage.getItem("")}
     },
   }).then(processServerResponse);
 }
 
 export function postItems(values) {
-  // write fetch based return statement (return fetch()) but with POST method then stringify
-  return fetch(`${baseUrl}/profile`, {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,8 +21,7 @@ export function postItems(values) {
 }
 
 export function deleteItems(id) {
-  // write fetch based return statement (return fetch()) but with DELETE method
-  return fetch(`${baseUrl}/profile/${id}`, {
+  return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

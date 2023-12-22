@@ -16,7 +16,7 @@ const AddItemModal = ({ handleCloseModal, handleClick, onAddItem, isOpen }) => {
 
   const [weatherType, setWeatherType] = useState("");
   const handleRadioChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setWeatherType(e.target.value);
   };
 
@@ -50,6 +50,7 @@ const AddItemModal = ({ handleCloseModal, handleClick, onAddItem, isOpen }) => {
           className="modal__name-submit"
           value={name}
           onChange={handleNameChange}
+          required
         />
       </label>
       <label className="modal__image-input">
@@ -62,6 +63,7 @@ const AddItemModal = ({ handleCloseModal, handleClick, onAddItem, isOpen }) => {
           className="modal__image-submit"
           value={link}
           onChange={handleUrlChange}
+          required
         />
       </label>
       <p className="weather__text">Select the weather type:</p>
