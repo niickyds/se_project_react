@@ -18,8 +18,6 @@
   max-width: 496px;
   width: 100%;
   border-radius: 20px;
-  padding: 28px 28px 36px 28px;
-  /* font-family: ; */
 }
 
 .modal__close {
@@ -67,14 +65,14 @@
   display: flex;
   justify-content: flex-end;
   position: relative;
-  bottom: 118px;
+  bottom: 65px;
+  padding-right: 15px;
 }
 
 .modal__delete-button {
   color: #ff4d00;
   background: none;
   border: none;
-  font-family: Cabinet Grotesk;
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;

@@ -44,10 +44,10 @@ function App() {
 
   const handleDeleteCard = () => {
     try {
-      deleteItems(selectedCard.id);
-      console.log(selectedCard.id);
+      deleteItems(selectedCard._id);
+      console.log(selectedCard._id);
       setClothingItems((prevItems) =>
-        prevItems.filter((item) => item.id !== selectedCard.id)
+        prevItems.filter((item) => item._id !== selectedCard._id)
       );
       handleCloseModal();
     } catch (error) {
