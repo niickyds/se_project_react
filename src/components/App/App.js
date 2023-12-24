@@ -67,6 +67,12 @@ function App() {
     }
   };
 
+  const handleClick = (evt) => {
+    if (evt.target === evt.currentTarget) {
+      setActiveModal("");
+    }
+  };
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -76,12 +82,6 @@ function App() {
       .catch(console.error);
   }, []);
 
-  const handleClick = (evt) => {
-    if (evt.target === evt.currentTarget) {
-      setActiveModal("");
-    }
-  };
-
   useEffect(() => {
     getItems()
       .then((items) => {
@@ -90,7 +90,7 @@ function App() {
       .catch((error) => {
         console.error(error);
       });
-  });
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (evt) => {
