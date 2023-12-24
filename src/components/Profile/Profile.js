@@ -1,5 +1,5 @@
 import SideBar from "./SideBar";
-import ClothesSection from "./ClothesSection";
+import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
 const Profile = ({ onCreate, clothingItems, onSelectCard }) => {
