@@ -42,20 +42,17 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const handleDeleteCard = async () => {
-    try {
-      deleteItems(selectedCard._id);
-      console.log(selectedCard._id);
-      setClothingItems((prevItems) =>
-        prevItems.filter((item) => item._id !== selectedCard._id)
-      );
-      handleCloseModal();
-    } catch (error) {
-      console.error(error);
-    }
+  const handleDeleteCard = (selectedCard) => {
+    console.log(selectedCard);
+    return deleteItems(selectedCard._id).then(() => {
+      const newItemList = clothingItems.filter((item) => {
+        return item._id !== selectedCard._id;
+      });
+      setClothingItems(newItemList);
+    });
   };
 
-  const onAddItem = async (values) => {
+  const onAddItem = (values) => {
     try {
       const res = postItems(values);
       console.log(res);
