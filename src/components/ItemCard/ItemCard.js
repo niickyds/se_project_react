@@ -1,7 +1,7 @@
 import "./ItemCard.css";
 
 const ItemCard = ({ data, onSelectCard }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <img
