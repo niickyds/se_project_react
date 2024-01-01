@@ -46,6 +46,7 @@
   position: relative;
   top: -24px;
   margin-bottom: 0;
+  max-width: 95%;
 }
 
 .modal__submit {

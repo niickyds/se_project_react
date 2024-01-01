@@ -16,9 +16,9 @@ const ClothesSection = ({ onClick, clothingItems, onSelectCard }) => {
       </div>
 
       <div className="clothes__section-cards">
-        {clothingItems.map((item) => {
+        {clothingItems.map((data) => {
           return (
-            <ItemCard item={item} onSelectCard={onSelectCard} key={item._id} />
+            <ItemCard data={data} onSelectCard={onSelectCard} key={data._id} />
           );
         })}
       </div>
