@@ -39,3 +39,7 @@
   flex-direction: row;
   gap: 21px 19px;
 }
+
+.clothes__section-card {
+  max-height: 350px;
+}

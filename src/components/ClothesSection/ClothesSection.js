@@ -18,7 +18,9 @@ const ClothesSection = ({ onClick, clothingItems, onSelectCard }) => {
       <div className="clothes__section-cards">
         {clothingItems.map((data) => {
           return (
+            // <div className="clothes__section-card">
             <ItemCard data={data} onSelectCard={onSelectCard} key={data._id} />
+            // </div>
           );
         })}
       </div>
