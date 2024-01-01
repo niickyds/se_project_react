@@ -42,7 +42,7 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const handleDeleteCard = (selectedCard) => {
+  const handleDeleteCard = () => {
     console.log(selectedCard);
     return deleteItems(selectedCard._id).then(() => {
       const newItemList = clothingItems.filter((item) => {
