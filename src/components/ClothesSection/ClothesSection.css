@@ -1,7 +1,6 @@
 .clothes__section {
   display: flex;
   flex-direction: column;
-  font-family: Cabinet Grotesk;
   font-size: 20px;
   font-weight: 700;
   line-height: 25px;
