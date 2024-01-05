@@ -42,16 +42,6 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  // const handleDeleteCard = () => {
-  //   console.log(selectedCard);
-  //   return deleteItems(selectedCard._id).then(() => {
-  //     const newItemList = clothingItems.filter((item) => {
-  //       return item._id !== selectedCard._id;
-  //     });
-  //     setClothingItems(newItemList);
-  //   });
-  // };
-
   const handleDeleteCard = () => {
     console.log(selectedCard);
     deleteItems(selectedCard._id)
@@ -59,7 +49,7 @@ function App() {
         setClothingItems(
           clothingItems.filter((item) => item._id !== selectedCard._id)
         );
-        setSelectedCard({});
+        // setSelectedCard({});
         handleCloseModal();
       })
       .catch((err) => console.error(err));
