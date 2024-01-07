@@ -8,27 +8,27 @@ const AddItemModal = ({ handleCloseModal, handleClick, onAddItem, isOpen }) => {
     setName(evt.target.value);
   };
 
-  const [link, setUrl] = useState("");
+  const [imageUrl, setUrl] = useState("");
   const handleUrlChange = (evt) => {
     console.log(evt.target.value);
     setUrl(evt.target.value);
   };
 
-  const [weatherType, setWeatherType] = useState("");
+  const [weather, setWeatherType] = useState("");
   const handleRadioChange = (e) => {
     // console.log(e.target.value);
     setWeatherType(e.target.value);
   };
 
-  const generateUniqueId = () => {
-    const timeStamp = new Date().getTime();
-    const randomNumber = Math.random().toString(20).substring(1, 4);
-    return `${timeStamp}-${randomNumber}`;
-  };
+  // const generateUniqueId = () => {
+  //   const timeStamp = new Date().getTime();
+  //   const randomNumber = Math.random().toString(20).substring(1, 4);
+  //   return `${timeStamp}-${randomNumber}`;
+  // };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onAddItem({ name, link, weatherType, id: generateUniqueId() });
+    onAddItem({ name, imageUrl, weather });
   };
 
   return (
@@ -61,7 +61,7 @@ const AddItemModal = ({ handleCloseModal, handleClick, onAddItem, isOpen }) => {
           minlenth="1"
           placeholder="Image URL"
           className="modal__image-submit"
-          value={link}
+          value={imageUrl}
           onChange={handleUrlChange}
           required
         />
