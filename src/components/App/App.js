@@ -84,8 +84,8 @@ function App() {
 
   useEffect(() => {
     getItems()
-      .then((items) => {
-        setClothingItems(items);
+      .then((item) => {
+        setClothingItems(item);
       })
       .catch((error) => {
         console.error(error);
@@ -112,7 +112,11 @@ function App() {
         <Header onCreateModal={handleCreateModal} />
         <Switch>
           <Route exact path="/">
-            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+            <Main
+              weatherTemp={temp}
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
+            />
           </Route>
           <Route path="/profile">
             <Profile
@@ -150,4 +154,5 @@ function App() {
   );
 }
 
+// json-server --watch db.json --id _id --port 3001
 export default App;
