@@ -56,15 +56,11 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    try {
-      const res = postItems(values);
+    postItems(values).then((res) => {
       console.log(values);
       setClothingItems((items) => [res, ...items]);
-      // console.log(res);
       handleCloseModal();
-    } catch (error) {
-      console.error(error);
-    }
+    });
   };
 
   const handleClick = (evt) => {

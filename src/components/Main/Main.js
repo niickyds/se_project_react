@@ -36,7 +36,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
               <ItemCard
                 item={item}
                 onSelectCard={onSelectCard}
-                key={item._id}
+                key={item._id || item.id}
               />
             );
           })}

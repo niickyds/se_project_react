@@ -2,6 +2,8 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import React, { useState } from "react";
 
 const AddItemModal = ({ handleCloseModal, handleClick, onAddItem, isOpen }) => {
+  const { v4: uuidv4 } = require("uuid");
+
   const [name, setName] = useState("");
   const handleNameChange = (evt) => {
     console.log(evt.target.value);
@@ -21,7 +23,7 @@ const AddItemModal = ({ handleCloseModal, handleClick, onAddItem, isOpen }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onAddItem({ name, imageUrl, weather });
+    onAddItem({ name, imageUrl, weather, id: uuidv4() });
   };
 
   return (
