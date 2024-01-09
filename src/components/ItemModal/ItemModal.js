@@ -1,6 +1,5 @@
 import "./ItemModal.css";
 
-// add delete button
 const ItemModal = ({ selectedCard, onClose, onClick }) => {
   return (
     <div className={"modal"}>

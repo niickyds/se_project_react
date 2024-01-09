@@ -10,7 +10,7 @@ const ItemCard = ({ item, onSelectCard }) => {
         className="card__image"
         onClick={() => onSelectCard(item)}
       />
-      <div className="card__name">{item.name}</div>
+      <p className="card__name">{item.name}</p>
     </div>
   );
 };
