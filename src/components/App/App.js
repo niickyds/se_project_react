@@ -56,11 +56,13 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    postItems(values).then((res) => {
-      console.log(values);
-      setClothingItems((items) => [res, ...items]);
-      handleCloseModal();
-    });
+    postItems(values)
+      .then((res) => {
+        console.log(values);
+        setClothingItems((items) => [res, ...items]);
+        handleCloseModal();
+      })
+      .catch((err) => console.error(err));
   };
 
   const handleClick = (evt) => {
