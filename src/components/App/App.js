@@ -67,7 +67,7 @@ function App() {
 
   const handleClick = (evt) => {
     if (evt.target === evt.currentTarget) {
-      handleCloseModal("");
+      handleCloseModal();
     }
   };
 
@@ -93,7 +93,7 @@ function App() {
   useEffect(() => {
     const handleKeyDown = (evt) => {
       if (evt.key === "Escape" && activeModal !== "") {
-        handleCloseModal("");
+        handleCloseModal();
       }
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -119,7 +119,7 @@ function App() {
           <Profile
             onSelectCard={handleSelectedCard}
             clothingItems={clothingItems}
-            onCreate={handleCreateModal}
+            onClick={handleCreateModal}
           />
         </Route>
       </Switch>
@@ -130,6 +130,7 @@ function App() {
           handleClick={handleClick}
           isOpen={activeModal === "create"}
           onAddItem={onAddItem}
+          buttonText={"Add Garment"}
         />
       )}
       {activeModal === "preview" && (

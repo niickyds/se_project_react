@@ -1,7 +1,7 @@
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
-const ClothesSection = ({ handleCreateModal, clothingItems, onSelectCard }) => {
+const ClothesSection = ({ onClick, clothingItems, onSelectCard }) => {
   return (
     <section className="clothes__section">
       <div className="clothes__section-bar">
@@ -9,7 +9,7 @@ const ClothesSection = ({ handleCreateModal, clothingItems, onSelectCard }) => {
         <button
           className="clothes__section-btn"
           type="button"
-          onClick={handleCreateModal}
+          onClick={onClick}
         >
           + Add New
         </button>
