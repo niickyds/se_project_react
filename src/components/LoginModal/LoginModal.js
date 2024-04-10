@@ -19,4 +19,44 @@ const LoginModal = ({ handleCloseModal, handleLogin, onRegisterModal }) => {
     }
     handleLogin(values);
   };
+
+  return (
+    <ModalWithForm
+      onClose={handleCloseModal}
+      onSubmit={handleSubmit}
+      title="Login"
+      name="Login"
+      buttonText="Login"
+    >
+      <label className="modal__input-label">
+        Email
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          className="modal__input"
+          value={values.email}
+          onChange={handleChange}
+          required
+        ></input>
+      </label>
+      <label className="modal__input-label">
+        Password
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          className="modal__input"
+          value={values.password}
+          onChange={handleChange}
+          required
+        ></input>
+      </label>
+      <button className="modal__signup" type="button" onClick={onRegisterModal}>
+        or Sign Up
+      </button>
+    </ModalWithForm>
+  );
 };
+
+export default LoginModal;
