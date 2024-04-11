@@ -1,4 +1,5 @@
-import { userState } from "react";
+import "./LoginModal.css";
+import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const LoginModal = ({ handleCloseModal, handleLogin, onRegisterModal }) => {
@@ -8,7 +9,7 @@ const LoginModal = ({ handleCloseModal, handleLogin, onRegisterModal }) => {
   });
 
   const handleChange = (evt) => {
-    const { name, value } = e.target;
+    const { name, value } = evt.target;
     setValues({ ...values, [name]: value });
   };
 

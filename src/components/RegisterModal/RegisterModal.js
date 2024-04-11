@@ -1,4 +1,5 @@
-import { userState } from "react";
+import "./RegisterModal.css";
+import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const RegisterModal = ({
@@ -15,7 +16,7 @@ const RegisterModal = ({
   });
 
   const handleChange = (evt) => {
-    const { name, value } = e.target;
+    const { name, value } = evt.target;
     setValues({ ...values, [name]: value });
   };
 
@@ -87,3 +88,5 @@ const RegisterModal = ({
     </ModalWithForm>
   );
 };
+
+export default RegisterModal;

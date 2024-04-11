@@ -4,11 +4,13 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
+import AddItemModal from "../AddItemModal/AddItemModal";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/WeatherApi";
 import { useEffect, useState } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom";
-import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 import { getItems, postItems, deleteItems } from "../../utils/api";
@@ -21,6 +23,17 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = userState(false);
+
+  const handleRegisterModal = () => {
+    setActiveModal("register");
+  };
+
+  const handleLoginModal = () => {
+    setActiveModal("login");
+  };
+
+  // pen
+  const handleRegistration = (values) => {};
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -73,8 +86,6 @@ function App() {
     }
   };
 
-  const handleRegistration = (data) => {};
-
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -112,7 +123,12 @@ function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-          <Header onCreateModal={handleCreateModal} />
+          <Header
+            onCreateModal={handleCreateModal}
+            onRegisterModal={handleRegisterModal}
+            onLoginModal={handleLoginModal}
+            isLoggedIn={isLoggedIn}
+          />
           <Switch>
             <Route exact path="/">
               <Main
@@ -152,6 +168,17 @@ function App() {
               onClose={handleCloseModal}
               deleteCard={handleDeleteCard}
             />
+          )}
+          {activeModal === "register" && (
+            <RegisterModal
+              onClose={handleCloseModal}
+              onLoginModal={handleLoginModal}
+              handleRegistration={handleRegistration}
+              isOpen={activeModal === "register"}
+            />
+          )}
+          {activeModal === "login" && (
+            <DeleteItemModal onClose={handleCloseModal} />
           )}
         </CurrentTemperatureUnitContext.Provider>
       </div>
