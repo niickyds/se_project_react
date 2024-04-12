@@ -34,3 +34,11 @@ export function deleteItems(_id) {
     },
   }).then(processServerResponse);
 }
+
+export const checkServerResponse = (res) => {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+};
+
+export const request = (url, option) => {
+  return fetch(url, option).then(checkServerResponse);
+};

@@ -1,4 +1,5 @@
 import { baseUrl } from "./api.js";
+import { request } from "./api.js";
 
 export function signUp({ name, avatar, email, password }) {
   return (request(`${baseUrl}/signup`),
@@ -9,9 +10,9 @@ export function signUp({ name, avatar, email, password }) {
     },
     body: JSON.stringify({ name, avatar, email, password }),
   }).then((data) => {
-    if (data.err) {
-      console.log(err);
-      throw new Error(data.err);
+    if (data.error) {
+      console.log(data.error);
+      throw new Error(data.error);
     }
   });
 }
@@ -25,9 +26,19 @@ export function signIn({ email, password }) {
     },
     body: JSON.stringify({ email, password }),
   }).then((data) => {
-    if (data.err) {
-      console.log(err);
-      throw new Error(data.err);
+    if (data.error) {
+      console.log(data.error);
+      throw new Error(data.error);
     }
   });
 }
+
+export const checkToken = (token) => {
+  return request(`${baseUrl}/users/me`, {
+    method: "GET",
+    header: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+};

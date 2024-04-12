@@ -15,6 +15,8 @@ import Profile from "../Profile/Profile";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 import { getItems, postItems, deleteItems } from "../../utils/api";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import * as auth from "../../utils/auth.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -22,7 +24,8 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = userState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({ data: {} });
 
   const handleRegisterModal = () => {
     setActiveModal("register");
@@ -64,10 +67,21 @@ function App() {
         setClothingItems(
           clothingItems.filter((item) => item._id !== selectedCard._id)
         );
-        // setSelectedCard({});
         handleCloseModal();
       })
       .catch((err) => console.error(err));
+  };
+
+  const handleTokencheck = () => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      auth.checkToken(jwt).then((data) => {
+        if (data) {
+          setIsLoggedIn(true);
+          setCurrentUser({ data });
+        }
+      });
+    }
   };
 
   const onAddItem = (values) => {
@@ -137,13 +151,13 @@ function App() {
                 clothingItems={clothingItems}
               />
             </Route>
-            <Route path="/profile">
+            <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile">
               <Profile
                 onSelectCard={handleSelectedCard}
                 clothingItems={clothingItems}
                 onClick={handleCreateModal}
               />
-            </Route>
+            </ProtectedRoute>
           </Switch>
           <Footer />
           {activeModal === "create" && (
@@ -178,7 +192,11 @@ function App() {
             />
           )}
           {activeModal === "login" && (
-            <DeleteItemModal onClose={handleCloseModal} />
+            <LoginModal
+              onClose={handleCloseModal}
+              onRegisterModal={handleRegisterModal}
+              isOpen={activeModal === "login"}
+            />
           )}
         </CurrentTemperatureUnitContext.Provider>
       </div>
