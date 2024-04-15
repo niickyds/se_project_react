@@ -35,9 +35,6 @@ function App() {
     setActiveModal("login");
   };
 
-  // pen
-  const handleRegistration = (values) => {};
-
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -69,19 +66,42 @@ function App() {
         );
         handleCloseModal();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.log(err));
   };
 
   const handleTokencheck = () => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      auth.checkToken(jwt).then((data) => {
-        if (data) {
-          setIsLoggedIn(true);
-          setCurrentUser({ data });
-        }
-      });
+      auth
+        .checkToken(jwt)
+        .then((data) => {
+          if (data) {
+            setIsLoggedIn(true);
+            setCurrentUser({ data });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
+  };
+
+  const handleLogin = (values) => {
+    auth.signIn(values.email, values.password).then((data) => {
+      if (data.token) {
+        console.log(data.token);
+        handleTokencheck();
+        handleCloseModal();
+      }
+    });
+  };
+
+  const handleRegistration = (values) => {
+    auth.signUp(values).then(() => {
+      handleLogin(values).catch((err) => {
+        console.log(err);
+      });
+    });
   };
 
   const onAddItem = (values) => {
@@ -91,7 +111,7 @@ function App() {
         setClothingItems((items) => [res, ...items]);
         handleCloseModal();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.log(err));
   };
 
   const handleClick = (evt) => {
@@ -106,7 +126,9 @@ function App() {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   useEffect(() => {
@@ -114,8 +136,8 @@ function App() {
       .then((item) => {
         setClothingItems(item);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
