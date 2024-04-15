@@ -1,5 +1,6 @@
-import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
+import ItemCard from "../ItemCard/ItemCard";
+import React from "react";
 
 const ClothesSection = ({ onClick, clothingItems, onSelectCard }) => {
   return (
@@ -18,7 +19,12 @@ const ClothesSection = ({ onClick, clothingItems, onSelectCard }) => {
       <div className="clothes__section-cards">
         {clothingItems.map((item) => {
           return (
-            <ItemCard item={item} onSelectCard={onSelectCard} key={item._id} />
+            <ItemCard
+              item={item}
+              onSelectCard={onSelectCard}
+              key={item._id}
+              id={item._id}
+            />
           );
         })}
       </div>
