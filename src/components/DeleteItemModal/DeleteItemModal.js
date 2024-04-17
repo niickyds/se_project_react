@@ -1,3 +1,4 @@
+import "./DeleteItemModal.css";
 import closeBtn from "../../images/Close.svg";
 import "../ModalWithForm/ModalWithForm.css";
 
