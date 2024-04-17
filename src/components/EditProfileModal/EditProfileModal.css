@@ -1,0 +1,16 @@
+.modal__input {
+  width: 100%;
+  background-color: transparent;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+  border-color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.modal__input-label {
+  margin-left: 2px;
+  font-weight: 700;
+}

@@ -7,6 +7,10 @@ export const processServerResponse = (res) => {
   return Promise.reject(`Error: ${res.status}`);
 };
 
+export const request = (url, option) => {
+  return fetch(url, option).then(checkServerResponse);
+};
+
 export function getItems() {
   return fetch(`${baseUrl}/items`, {
     method: "GET",
@@ -34,11 +38,3 @@ export function deleteItems(_id) {
     },
   }).then(processServerResponse);
 }
-
-export const checkServerResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-};
-
-export const request = (url, option) => {
-  return fetch(url, option).then(checkServerResponse);
-};

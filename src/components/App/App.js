@@ -7,12 +7,13 @@ import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
 import { getForecastWeather, parseWeatherData } from "../../utils/WeatherApi";
 import { useEffect, useState } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 import { getItems, postItems, deleteItems } from "../../utils/api";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -120,6 +121,14 @@ function App() {
     }
   };
 
+  const handleProfileUpdate = (data) => {
+    const token = localStorage.getItem("jwt");
+    auth.editProfileData(data, token).then((data) => {
+      setCurrentUser({ data: data });
+      handleCloseModal;
+    });
+  };
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -218,6 +227,13 @@ function App() {
               onClose={handleCloseModal}
               onRegisterModal={handleRegisterModal}
               isOpen={activeModal === "login"}
+            />
+          )}
+          {activeModal === "edit" && (
+            <EditProfileModal
+              isOpen={activeModal === "edit"}
+              handleCloseModal={handleCloseModal}
+              updateProfileData={handleProfileUpdate}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
