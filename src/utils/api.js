@@ -38,3 +38,25 @@ export function deleteItems(_id) {
     },
   }).then(processServerResponse);
 }
+
+export function addCardLike(itemId, token) {
+  return request(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export function removeCardLike(itemId, token) {
+  return request(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+}

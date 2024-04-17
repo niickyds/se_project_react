@@ -58,18 +58,6 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const handleDeleteCard = () => {
-    console.log(selectedCard);
-    deleteItems(selectedCard._id)
-      .then(() => {
-        setClothingItems(
-          clothingItems.filter((item) => item._id !== selectedCard._id)
-        );
-        handleCloseModal();
-      })
-      .catch((err) => console.log(err));
-  };
-
   const handleTokencheck = () => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
@@ -129,6 +117,44 @@ function App() {
     });
   };
 
+  const handleDeleteCard = () => {
+    console.log(selectedCard);
+    deleteItems(selectedCard._id)
+      .then(() => {
+        setClothingItems(
+          clothingItems.filter((item) => item._id !== selectedCard._id)
+        );
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    // Check if this card is not currently liked
+    !isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+        api
+          // the first argument is the card's id
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+        api
+          // the first argument is the card's id
+          .removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -180,6 +206,7 @@ function App() {
                 weatherTemp={temp}
                 onSelectCard={handleSelectedCard}
                 clothingItems={clothingItems}
+                handleCardLike={handleCardLike}
               />
             </Route>
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile">
@@ -187,6 +214,7 @@ function App() {
                 onSelectCard={handleSelectedCard}
                 clothingItems={clothingItems}
                 onClick={handleCreateModal}
+                handleCardLike={handleCardLike}
               />
             </ProtectedRoute>
           </Switch>
