@@ -53,6 +53,10 @@ function App() {
     setActiveModal("delete");
   };
 
+  const handleEditModal = () => {
+    setActiveModal("edit");
+  };
+
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
@@ -91,6 +95,11 @@ function App() {
         console.log(err);
       });
     });
+  };
+
+  const handleSignOut = () => {
+    setIsLoggedIn(falue);
+    setCurrentUser({ data: {} });
   };
 
   const onAddItem = (values) => {
@@ -215,6 +224,8 @@ function App() {
                 clothingItems={clothingItems}
                 onClick={handleCreateModal}
                 handleCardLike={handleCardLike}
+                handleSignOut={handleSignOut}
+                onEditModal={handleEditModal}
               />
             </ProtectedRoute>
           </Switch>
