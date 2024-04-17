@@ -18,6 +18,7 @@ import { getItems, postItems, deleteItems } from "../../utils/api";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import * as auth from "../../utils/auth.js";
+import * as api from "../../utils/api.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -98,7 +99,7 @@ function App() {
   };
 
   const handleSignOut = () => {
-    setIsLoggedIn(falue);
+    setIsLoggedIn(false);
     setCurrentUser({ data: {} });
   };
 
@@ -122,7 +123,7 @@ function App() {
     const token = localStorage.getItem("jwt");
     auth.editProfileData(data, token).then((data) => {
       setCurrentUser({ data: data });
-      handleCloseModal;
+      handleCloseModal();
     });
   };
 

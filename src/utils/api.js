@@ -8,7 +8,7 @@ export const processServerResponse = (res) => {
 };
 
 export const request = (url, option) => {
-  return fetch(url, option).then(checkServerResponse);
+  return fetch(url, option).then(processServerResponse);
 };
 
 export function getItems() {
