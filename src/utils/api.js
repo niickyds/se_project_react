@@ -20,21 +20,23 @@ export function getItems() {
   }).then(processServerResponse);
 }
 
-export function postItems(item) {
+export function postItems(item, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(item),
   }).then(processServerResponse);
 }
 
-export function deleteItems(_id) {
+export function deleteItems(_id, token) {
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then(processServerResponse);
 }

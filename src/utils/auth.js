@@ -1,5 +1,5 @@
-import { baseUrl } from "./api.js";
 import { request } from "./api.js";
+export const baseUrl = "http://localhost:3001";
 
 export function signUp({ name, avatar, email, password }) {
   return (request(`${baseUrl}/signup`),

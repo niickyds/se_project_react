@@ -177,7 +177,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getItems()
+    handleTokencheck();
+    api
+      .getItems()
       .then((item) => {
         setClothingItems(item);
       })
