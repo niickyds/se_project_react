@@ -21,13 +21,18 @@ export function getItems() {
 }
 
 export function postItems(item, token) {
+  console.log(token);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(item),
+    body: JSON.stringify({
+      name: item.name,
+      weather: item.weather,
+      imageUrl: item.imageUrl,
+    }),
   }).then(processServerResponse);
 }
 

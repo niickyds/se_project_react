@@ -3,7 +3,7 @@ import React from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard, handleCardLike, id }) => {
-  const currentUser = React.userContext(CurrentUserContext);
+  const currentUser = React.useContext(CurrentUserContext);
   const isLiked = item.likes.some((id) => id === currentUser.data._id);
   const itemlikeButtonClassName = `card__like-button ${
     isLiked ? "card__like-button-active" : "card__like-button"
@@ -15,7 +15,6 @@ const ItemCard = ({ item, onSelectCard, handleCardLike, id }) => {
         alt={item.name}
         className="card__image"
         onClick={() => onSelectCard(item)}
-        handleCardLike={handleCardLike}
       />
       <p className="card__name">{item.name}</p>
       <button

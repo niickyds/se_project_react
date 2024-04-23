@@ -14,7 +14,6 @@ import { useEffect, useState } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import { getItems, postItems, deleteItems } from "../../utils/api";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import * as auth from "../../utils/auth.js";
@@ -71,7 +70,7 @@ function App() {
         .then((data) => {
           if (data) {
             setIsLoggedIn(true);
-            setCurrentUser({ data });
+            setCurrentUser({ data: {} });
           }
         })
         .catch((err) => {
@@ -104,7 +103,10 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    postItems(values)
+    const token = localStorage.getItem("jwt");
+    console.log(token);
+    api
+      .postItems(values, token)
       .then((res) => {
         console.log(values);
         setClothingItems((items) => [res, ...items]);
@@ -129,7 +131,8 @@ function App() {
 
   const handleDeleteCard = () => {
     console.log(selectedCard);
-    deleteItems(selectedCard._id)
+    api
+      .deleteItems(selectedCard._id)
       .then(() => {
         setClothingItems(
           clothingItems.filter((item) => item._id !== selectedCard._id)
