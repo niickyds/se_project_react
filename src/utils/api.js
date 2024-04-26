@@ -21,7 +21,6 @@ export function getItems() {
 }
 
 export function postItems(item, token) {
-  console.log(token);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {

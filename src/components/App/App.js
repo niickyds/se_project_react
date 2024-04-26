@@ -271,6 +271,7 @@ function App() {
             <LoginModal
               handleCloseModal={handleCloseModal}
               onRegisterModal={handleRegisterModal}
+              handleLogin={handleLogin}
               isOpen={activeModal === "login"}
             />
           )}
