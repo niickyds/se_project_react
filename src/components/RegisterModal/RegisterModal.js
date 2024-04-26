@@ -82,7 +82,11 @@ const RegisterModal = ({
           required
         ></input>
       </label>
-      <button className="modal__signup" type="button" onClick={onLoginModal}>
+      <button
+        className="modal__signup-register"
+        type="button"
+        onClick={onLoginModal}
+      >
         or Login
       </button>
     </ModalWithForm>

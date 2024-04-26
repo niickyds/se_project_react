@@ -248,20 +248,20 @@ function App() {
           {activeModal === "preview" && (
             <ItemModal
               selectedCard={selectedCard}
-              onClose={handleCloseModal}
+              handleCloseModal={handleCloseModal}
               handleClick={handleClick}
               onClick={handleDeleteOpenModal}
             />
           )}
           {activeModal === "delete" && (
             <DeleteItemModal
-              onClose={handleCloseModal}
+              handleCloseModal={handleCloseModal}
               deleteCard={handleDeleteCard}
             />
           )}
           {activeModal === "register" && (
             <RegisterModal
-              onClose={handleCloseModal}
+              handleCloseModal={handleCloseModal}
               onLoginModal={handleLoginModal}
               handleRegistration={handleRegistration}
               isOpen={activeModal === "register"}
@@ -269,7 +269,7 @@ function App() {
           )}
           {activeModal === "login" && (
             <LoginModal
-              onClose={handleCloseModal}
+              handleCloseModal={handleCloseModal}
               onRegisterModal={handleRegisterModal}
               isOpen={activeModal === "login"}
             />

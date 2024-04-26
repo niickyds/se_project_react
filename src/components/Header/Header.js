@@ -46,10 +46,18 @@ const Header = ({
           </div>
         ) : (
           <div>
-            <button className="" type="text" onClick={onRegisterModal}>
+            <button
+              className="header__register"
+              type="text"
+              onClick={onRegisterModal}
+            >
               Sign Up
             </button>{" "}
-            <button className="" type="text" onClick={onLoginModal}>
+            <button
+              className="header__login"
+              type="text"
+              onClick={onLoginModal}
+            >
               Log In
             </button>{" "}
           </div>
