@@ -8,11 +8,11 @@ const Profile = ({
   onSelectCard,
   handleCardLike,
   handleEditModal,
-  handleSignOut,
+  handleLogOut,
 }) => {
   return (
     <div className="profile">
-      <SideBar onEditModal={handleEditModal} handleSignOut={handleSignOut} />
+      <SideBar onEditModal={handleEditModal} handleLogOut={handleLogOut} />
       <ClothesSection
         clothingItems={clothingItems}
         onSelectCard={onSelectCard}

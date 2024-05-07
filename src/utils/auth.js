@@ -1,36 +1,24 @@
-import { request } from "./api.js";
+import { request, processServerResponse } from "./api.js";
 export const baseUrl = "http://localhost:3001";
 
 export function signUp({ name, avatar, email, password }) {
-  return (request(`${baseUrl}/signup`),
-  {
+  return request(`${baseUrl}/signup`, {
     method: "POST",
     header: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then((data) => {
-    if (data.error) {
-      console.log(data.error);
-      throw new Error(data.error);
-    }
-  });
+  }).then(processServerResponse);
 }
 
 export function signIn({ email, password }) {
-  return (request(`${baseUrl}/signin`),
-  {
+  return request(`${baseUrl}/signin`, {
     method: "POST",
     header: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then((data) => {
-    if (data.error) {
-      console.log(data.error);
-      throw new Error(data.error);
-    }
-  });
+  }).then(processServerResponse);
 }
 
 export const checkToken = (token) => {
@@ -40,7 +28,7 @@ export const checkToken = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  });
+  }).then(processServerResponse);
 };
 
 export function editProfileData(data, token) {
@@ -55,5 +43,5 @@ export function editProfileData(data, token) {
       name: data.name,
       avatar: data.avatar,
     }),
-  });
+  }).then(processServerResponse);
 }

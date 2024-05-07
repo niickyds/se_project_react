@@ -26,7 +26,12 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({ data: {} });
+  const [currentUser, setCurrentUser] = useState({
+    name: "",
+    email: "",
+    avatar: "",
+    _id: "",
+  });
 
   const handleRegisterModal = () => {
     setActiveModal("register");
@@ -62,44 +67,56 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const handleTokencheck = () => {
+  const handleCurrentUser = () => {
     const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      auth
-        .checkToken(jwt)
-        .then((data) => {
-          if (data) {
-            setIsLoggedIn(true);
-            setCurrentUser({ data: {} });
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
-
-  const handleLogin = (values) => {
-    auth.signIn(values.email, values.password).then((data) => {
-      if (data.token) {
-        console.log(data.token);
-        handleTokencheck();
-        handleCloseModal();
-      }
-    });
-  };
-
-  const handleRegistration = (values) => {
-    auth.signUp(values).then(() => {
-      handleLogin(values).catch((err) => {
+    auth
+      .checkToken(jwt)
+      .then(({ name, avatar, email, _id }) => {
+        setIsLoggedIn(true);
+        setCurrentUser({ name, avatar, email, _id });
+      })
+      .catch((err) => {
         console.log(err);
       });
-    });
   };
 
-  const handleSignOut = () => {
+  // handle Login & Logout
+
+  const handleLogOut = () => {
     setIsLoggedIn(false);
     setCurrentUser({ data: {} });
+  };
+
+  const handleLogin = (data) => {
+    setIsLoggedIn(true);
+    handleCurrentUser(data);
+  };
+
+  const handleLoginSubmit = ({ email, password }) => {
+    auth
+      .signIn({ email, password })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        handleLogin(res);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleRegistration = ({ name, avatar, email, password }) => {
+    auth
+      .signUp({ name, avatar, email, password })
+      .then((data) => {
+        console.log(data);
+        handleLoginSubmit({ email, password });
+        console.log(data);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const onAddItem = (values) => {
@@ -180,7 +197,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    handleTokencheck();
+    // handleCurrentUser();
     api
       .getItems()
       .then((item) => {
@@ -230,7 +247,7 @@ function App() {
                 clothingItems={clothingItems}
                 onClick={handleCreateModal}
                 handleCardLike={handleCardLike}
-                handleSignOut={handleSignOut}
+                handleLogOut={handleLogOut}
                 onEditModal={handleEditModal}
               />
             </ProtectedRoute>
@@ -271,7 +288,7 @@ function App() {
             <LoginModal
               handleCloseModal={handleCloseModal}
               onRegisterModal={handleRegisterModal}
-              handleLogin={handleLogin}
+              handleLogin={handleLoginSubmit}
               isOpen={activeModal === "login"}
             />
           )}
