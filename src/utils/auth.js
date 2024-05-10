@@ -4,7 +4,7 @@ export const baseUrl = "http://localhost:3001";
 export function signUp({ name, avatar, email, password }) {
   return request(`${baseUrl}/signup`, {
     method: "POST",
-    header: {
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
@@ -14,7 +14,7 @@ export function signUp({ name, avatar, email, password }) {
 export function signIn({ email, password }) {
   return request(`${baseUrl}/signin`, {
     method: "POST",
-    header: {
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
@@ -24,7 +24,7 @@ export function signIn({ email, password }) {
 export const checkToken = (token) => {
   return request(`${baseUrl}/users/me`, {
     method: "GET",
-    header: {
+    headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },

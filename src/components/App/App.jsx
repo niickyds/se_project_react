@@ -1,21 +1,24 @@
 // import logo from "../../images/Logo.svg";
 import "./App.css";
-import Header from "../Header/Header";
-import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
-import ItemModal from "../ItemModal/ItemModal";
-import AddItemModal from "../AddItemModal/AddItemModal";
-import LoginModal from "../LoginModal/LoginModal";
-import RegisterModal from "../RegisterModal/RegisterModal";
-import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
-import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
-import { getForecastWeather, parseWeatherData } from "../../utils/WeatherApi";
+import Header from "../Header/Header.jsx";
+import Main from "../Main/Main.jsx";
+import Footer from "../Footer/Footer.jsx";
+import ItemModal from "../ItemModal/ItemModal.jsx";
+import AddItemModal from "../AddItemModal/AddItemModal.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import DeleteItemModal from "../DeleteItemModal/DeleteItemModal.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
+import {
+  getForecastWeather,
+  parseWeatherData,
+} from "../../utils/WeatherApi.js";
 import { useEffect, useState } from "react";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom";
-import Profile from "../Profile/Profile";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Profile from "../Profile/Profile.jsx";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import * as auth from "../../utils/auth.js";
 import * as api from "../../utils/api.js";
 
@@ -80,7 +83,7 @@ function App() {
       });
   };
 
-  // handle Login & Logout
+  // handle Login, Logout & Sign Up
 
   const handleLogOut = () => {
     setIsLoggedIn(false);
