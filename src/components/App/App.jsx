@@ -21,6 +21,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import * as auth from "../../utils/auth.js";
 import * as api from "../../utils/api.js";
+import { setToken, getToken } from "../../utils/token.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -100,6 +101,7 @@ function App() {
       .signIn({ email, password })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
+        console.log(res);
         handleLogin(res);
         handleCloseModal();
       })
@@ -128,7 +130,6 @@ function App() {
     api
       .postItems(values, token)
       .then((res) => {
-        console.log(values);
         setClothingItems((items) => [res, ...items]);
         handleCloseModal();
       })
@@ -143,8 +144,8 @@ function App() {
 
   const handleProfileUpdate = (data) => {
     const token = localStorage.getItem("jwt");
-    auth.editProfileData(data, token).then((data) => {
-      setCurrentUser({ data: data });
+    api.editProfileData(data, token).then((res) => {
+      setCurrentUser(res.data);
       handleCloseModal();
     });
   };
@@ -222,6 +223,13 @@ function App() {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [activeModal]);
+
+  useEffect(() => {
+    const jwt = getToken();
+    if (!jwt) {
+      return;
+    }
+  });
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
