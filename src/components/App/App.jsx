@@ -113,10 +113,8 @@ function App() {
   const handleRegistration = ({ name, avatar, email, password }) => {
     auth
       .signUp({ name, avatar, email, password })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         handleLoginSubmit({ email, password });
-        console.log(data);
         handleCloseModal();
       })
       .catch((err) => {
