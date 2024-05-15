@@ -27,7 +27,7 @@ const Header = ({
       <div className="header__avater_logo">
         <ToggleSwitch />
         {isLoggedIn ? (
-          <div>
+          <div className="header__add-clothes_avatar">
             <button
               type="text"
               onClick={onCreateModal}
@@ -36,11 +36,11 @@ const Header = ({
               + Add Clothes
             </button>
             <NavLink to="/profile" className="header__user-link">
-              <p className="header__user">{`${currentUser.data.name}`}</p>
+              <p className="header__user">{`${currentUser.name}`}</p>
             </NavLink>
             <img
               className="header__avatar"
-              src={currentUser.data.avatar}
+              src={currentUser.avatar}
               alt="Avatar"
             ></img>
           </div>

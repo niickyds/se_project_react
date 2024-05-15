@@ -87,3 +87,8 @@
   cursor: pointer;
   transition: 0.25s linear;
 }
+
+.header__add-clothes_avatar {
+  display: flex;
+  gap: 20px;
+}

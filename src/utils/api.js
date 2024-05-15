@@ -76,5 +76,5 @@ export function editProfileData(data, token) {
       name: data.name,
       avatar: data.avatar,
     }),
-  }).then(processServerResponse);
+  });
 }

@@ -1,8 +1,8 @@
-import { request, processServerResponse } from "./api.js";
+import { processServerResponse } from "./api.js";
 export const baseUrl = "http://localhost:3001";
 
 export function signUp({ name, avatar, email, password }) {
-  return request(`${baseUrl}/signup`, {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -12,7 +12,7 @@ export function signUp({ name, avatar, email, password }) {
 }
 
 export function signIn({ email, password }) {
-  return request(`${baseUrl}/signin`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export function signIn({ email, password }) {
 }
 
 export const checkToken = (token) => {
-  return request(`${baseUrl}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
