@@ -21,7 +21,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import * as auth from "../../utils/auth.js";
 import * as api from "../../utils/api.js";
-import { setToken, getToken } from "../../utils/token.js";
+import { getToken } from "../../utils/token.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -148,9 +148,9 @@ function App() {
   };
 
   const handleDeleteCard = () => {
-    console.log(selectedCard);
+    const token = localStorage.getItem("jwt");
     api
-      .deleteItems(selectedCard._id)
+      .deleteItems(selectedCard._id, token)
       .then(() => {
         setClothingItems(
           clothingItems.filter((item) => item._id !== selectedCard._id)

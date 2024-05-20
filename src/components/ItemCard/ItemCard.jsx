@@ -16,12 +16,14 @@ const ItemCard = ({ item, onSelectCard, handleCardLike, id }) => {
         className="card__image"
         onClick={() => onSelectCard(item)}
       />
-      <p className="card__name">{item.name}</p>
-      <button
-        className={itemlikeButtonClassName}
-        type="button"
-        onMouseDown={() => handleCardLike({ id, isLiked })}
-      ></button>
+      <p className="card__name">
+        {item.name}
+        <button
+          className={itemlikeButtonClassName}
+          type="button"
+          onMouseDown={() => handleCardLike({ id, isLiked })}
+        ></button>
+      </p>
     </div>
   );
 };
