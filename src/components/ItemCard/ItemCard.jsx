@@ -9,7 +9,7 @@ const ItemCard = ({ item, onSelectCard, handleCardLike, id }) => {
     isLiked ? "card__like-button-active" : "card__like-button"
   }`;
   return (
-    <div>
+    <div key={item.id}>
       <img
         src={item.imageUrl}
         alt={item.name}

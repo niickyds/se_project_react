@@ -4,7 +4,6 @@ import React, { useState } from "react";
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen, buttonText }) => {
   const [name, setName] = useState("");
   const handleNameChange = (evt) => {
-    console.log(evt.target.value);
     setName(evt.target.value);
   };
 

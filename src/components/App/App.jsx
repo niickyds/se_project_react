@@ -124,7 +124,6 @@ function App() {
 
   const onAddItem = (values) => {
     const token = localStorage.getItem("jwt");
-    console.log(token);
     api
       .postItems(values, token)
       .then((res) => {
@@ -277,6 +276,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               handleClick={handleClick}
               onClick={handleDeleteOpenModal}
+              onClose={handleCloseModal}
             />
           )}
           {activeModal === "delete" && (
