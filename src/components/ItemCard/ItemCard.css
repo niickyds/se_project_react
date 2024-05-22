@@ -30,7 +30,19 @@
 }
 
 .card__like-button {
+  background-image: url(../../images/LikeButton.svg);
   position: relative;
+  border: none;
+  width: 20px;
+  height: 18px;
   left: 8px;
-  bottom: 3px;
+  top: 3px;
+}
+
+.card__holder {
+  background-color: #e9e9e9;
+  width: 325px;
+  height: 328px;
+  border-radius: 10px;
+  cursor: pointer;
 }

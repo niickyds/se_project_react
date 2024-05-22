@@ -101,7 +101,6 @@ function App() {
       .signIn({ email, password })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        console.log(res);
         handleLogin(res);
         handleCloseModal();
       })
