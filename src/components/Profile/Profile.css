@@ -61,6 +61,7 @@
   font: inherit;
   border-radius: 0;
   appearance: none;
+  cursor: pointer;
 }
 
 .profile__avatar-logo {

@@ -1,7 +1,7 @@
 import React from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const SideBar = () => {
+const SideBar = ({ onEditModal, onLogOut }) => {
   const currentUser = React.useContext(CurrentUserContext);
 
   return (
@@ -15,11 +15,11 @@ const SideBar = () => {
         <p className="profile__user-name">{currentUser.name}</p>
       </div>
       <div className="profile__buttons">
-        <button type="button" className="profile__button">
+        <button type="button" className="profile__button" onClick={onEditModal}>
           {" "}
           Change profile data
         </button>
-        <button type="button" className="profile__button">
+        <button type="button" className="profile__button" onClick={onLogOut}>
           {" "}
           Log out
         </button>

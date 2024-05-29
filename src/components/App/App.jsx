@@ -138,9 +138,9 @@ function App() {
     }
   };
 
-  const handleProfileUpdate = (data) => {
+  const handleProfileUpdate = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
-    api.editProfileData(data, token).then((res) => {
+    api.editProfileData({ name, avatar }, token).then((res) => {
       setCurrentUser(res.data);
       handleCloseModal();
     });
@@ -254,7 +254,7 @@ function App() {
                 clothingItems={clothingItems}
                 onClick={handleCreateModal}
                 handleCardLike={handleCardLike}
-                handleLogOut={handleLogOut}
+                onLogOut={handleLogOut}
                 onEditModal={handleEditModal}
               />
             </ProtectedRoute>

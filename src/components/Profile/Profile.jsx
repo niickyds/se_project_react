@@ -7,12 +7,12 @@ const Profile = ({
   clothingItems,
   onSelectCard,
   handleCardLike,
-  handleEditModal,
-  handleLogOut,
+  onEditModal,
+  onLogOut,
 }) => {
   return (
     <div className="profile">
-      <SideBar onEditModal={handleEditModal} handleLogOut={handleLogOut} />
+      <SideBar onEditModal={onEditModal} onLogOut={onLogOut} />
       <ClothesSection
         clothingItems={clothingItems}
         onSelectCard={onSelectCard}
