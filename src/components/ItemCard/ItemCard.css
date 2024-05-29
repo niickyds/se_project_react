@@ -3,7 +3,7 @@
 
 .card__name {
   text-align: center;
-  background-color: white;
+  background-color: #efefef;
   border-radius: 4px;
   position: relative;
   top: -320px;
@@ -37,6 +37,7 @@
   height: 18px;
   left: 8px;
   top: 3px;
+  cursor: pointer;
 }
 
 .card__holder {
