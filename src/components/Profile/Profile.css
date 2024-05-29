@@ -35,9 +35,32 @@
 
 .profile__logo {
   display: flex;
+  gap: 15px;
   align-items: center;
-  gap: 20px;
+}
+
+.profile__sidebar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
   min-width: 229px;
+}
+
+.profile__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.profile__button {
+  background-color: transparent;
+  border: none;
+  text-align: inherit;
+  font: inherit;
+  border-radius: 0;
+  appearance: none;
 }
 
 .profile__avatar-logo {
