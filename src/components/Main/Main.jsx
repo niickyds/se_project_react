@@ -40,6 +40,7 @@ function Main({
   const weatherType = getWeatherType();
 
   const filteredCards = clothingItems.filter((item) => {
+    console.log(item);
     return item.weather === weatherType;
   });
 

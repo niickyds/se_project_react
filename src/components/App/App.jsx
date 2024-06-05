@@ -159,8 +159,10 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleCardLike = ({ id, isLiked }) => {
+  const handleCardLike = (id, isLiked) => {
+    console.log(id);
     const token = localStorage.getItem("jwt");
+    const cards = clothingItems;
     // Check if this card is not currently liked
     !isLiked
       ? // if so, send a request to add the user's id to the card's likes array
@@ -169,8 +171,11 @@ function App() {
           .addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((card) => {
+                return card._id === id ? updatedCard.data : card;
+              })
             );
+            console.log(cards);
           })
           .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
@@ -178,8 +183,11 @@ function App() {
           // the first argument is the card's id
           .removeCardLike(id, token)
           .then((updatedCard) => {
+            console.log(updatedCard.item);
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((card) => {
+                return card._id === id ? updatedCard.data : card;
+              })
             );
           })
           .catch((err) => console.log(err));
