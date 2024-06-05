@@ -126,7 +126,7 @@ function App() {
     api
       .postItems(values, token)
       .then((res) => {
-        setClothingItems((items) => [res, ...items]);
+        setClothingItems((items) => [res.data, ...items]);
         handleCloseModal();
       })
       .catch((err) => console.log(err));
