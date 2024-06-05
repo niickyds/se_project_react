@@ -245,7 +245,7 @@ function App() {
                 weatherTemp={temp}
                 onSelectCard={handleSelectedCard}
                 clothingItems={clothingItems}
-                handleCardLike={handleCardLike}
+                onCardLike={handleCardLike}
               />
             </Route>
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile">
