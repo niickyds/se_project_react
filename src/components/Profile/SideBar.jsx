@@ -16,11 +16,9 @@ const SideBar = ({ onEditModal, onLogOut }) => {
       </div>
       <div className="profile__buttons">
         <button type="button" className="profile__button" onClick={onEditModal}>
-          {" "}
           Change profile data
         </button>
         <button type="button" className="profile__button" onClick={onLogOut}>
-          {" "}
           Log out
         </button>
       </div>

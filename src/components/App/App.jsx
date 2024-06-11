@@ -141,7 +141,8 @@ function App() {
   const handleProfileUpdate = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
     api.editProfileData({ name, avatar }, token).then((res) => {
-      setCurrentUser(res.data);
+      setCurrentUser(res);
+      console.log(res);
       handleCloseModal();
     });
   };
