@@ -262,7 +262,7 @@ function App() {
                 onSelectCard={handleSelectedCard}
                 clothingItems={clothingItems}
                 onClick={handleCreateModal}
-                handleCardLike={handleCardLike}
+                onCardLike={handleCardLike}
                 onLogOut={handleLogOut}
                 onEditModal={handleEditModal}
               />

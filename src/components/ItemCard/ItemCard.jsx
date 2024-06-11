@@ -13,13 +13,13 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
     isLiked ? "card__like-button-active" : "card__like-button"
   }`;
 
-  const handleLike = () => {
-    onCardLike(id, isLiked);
-  };
+  // const handleLike = () => {
+  //   onCardLike(id, isLiked);
+  // };
 
-  const onCardClick = () => {
-    onSelectCard(item);
-  };
+  // const onCardClick = () => {
+  //   onSelectCard(item);
+  // };
 
   return (
     <div key={item.id} className="card__holder">
@@ -27,7 +27,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
         src={item.imageUrl}
         alt={item.name}
         className="card__image"
-        onClick={onCardClick}
+        onClick={() => onSelectCard(item)}
       />
       <p className="card__name">
         {item.name}
@@ -35,7 +35,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
           <button
             className={itemlikeButtonClassName}
             type="button"
-            onClick={handleLike}
+            onClick={() => onCardLike(id, isLiked)}
           ></button>
         ) : (
           ""
