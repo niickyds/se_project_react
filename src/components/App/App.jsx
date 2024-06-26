@@ -28,6 +28,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [location, setlocation] = useState("");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
@@ -202,6 +203,8 @@ function App() {
       .then((data) => {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
+        setlocation(data.name);
+        console.log(data);
       })
       .catch((err) => {
         console.log(err);
@@ -209,7 +212,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // handleCurrentUser();
     api
       .getItems()
       .then((item) => {
@@ -252,6 +254,7 @@ function App() {
             onRegisterModal={handleRegisterModal}
             onLoginModal={handleLoginModal}
             isLoggedIn={isLoggedIn}
+            location={location}
           />
           <Switch>
             <Route exact path="/">

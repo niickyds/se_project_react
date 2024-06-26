@@ -12,7 +12,12 @@ const Header = ({
   isLoggedIn,
   onRegisterModal,
   onLoginModal,
+  location,
 }) => {
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
   const currentUser = React.useContext(CurrentUserContext);
   return (
     <header className="header">
@@ -22,7 +27,9 @@ const Header = ({
             <img src={logo} alt="Logo" />
           </Link>
         </div>
-        <div className="header__date">Date</div>
+        <div className="header__date">
+          {currentDate}, {location}
+        </div>
       </div>
       <div className="header__avater_logo">
         <ToggleSwitch />

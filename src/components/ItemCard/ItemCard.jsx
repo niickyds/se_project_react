@@ -13,7 +13,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
   }`;
 
   return (
-    <div key={item.id} className="card__holder">
+    <div className="card__holder">
       <img
         src={item.imageUrl}
         alt={item.name}
