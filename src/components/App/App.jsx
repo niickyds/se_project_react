@@ -287,6 +287,7 @@ function App() {
               handleClick={handleClick}
               onClick={handleDeleteOpenModal}
               onClose={handleCloseModal}
+              isLoggedIn={isLoggedIn}
             />
           )}
           {activeModal === "delete" && (
