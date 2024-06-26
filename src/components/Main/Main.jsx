@@ -53,6 +53,7 @@ function Main({
             return (
               <ItemCard
                 item={item}
+                id={item._id}
                 key={item._id}
                 onSelectCard={onSelectCard}
                 onCardLike={onCardLike}

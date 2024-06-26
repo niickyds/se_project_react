@@ -9,6 +9,7 @@ const Profile = ({
   onCardLike,
   onEditModal,
   onLogOut,
+  isLoggedIn,
 }) => {
   return (
     <div className="profile">
@@ -18,6 +19,7 @@ const Profile = ({
         onSelectCard={onSelectCard}
         onClick={onClick}
         onCardLike={onCardLike}
+        isLoggedIn={isLoggedIn}
       />
     </div>
   );

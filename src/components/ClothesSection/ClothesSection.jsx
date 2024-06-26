@@ -2,7 +2,13 @@ import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 import React from "react";
 
-const ClothesSection = ({ onClick, clothingItems, onSelectCard }) => {
+const ClothesSection = ({
+  onClick,
+  clothingItems,
+  onSelectCard,
+  isLoggedIn,
+  onCardLike,
+}) => {
   return (
     <section className="clothes__section">
       <div className="clothes__section-bar">
@@ -24,6 +30,8 @@ const ClothesSection = ({ onClick, clothingItems, onSelectCard }) => {
               onSelectCard={onSelectCard}
               key={item._id}
               id={item._id}
+              onCardLike={onCardLike}
+              isLoggedIn={isLoggedIn}
             />
           );
         })}

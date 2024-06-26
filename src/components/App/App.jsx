@@ -255,6 +255,7 @@ function App() {
                 onSelectCard={handleSelectedCard}
                 clothingItems={clothingItems}
                 onCardLike={handleCardLike}
+                isLoggedIn={isLoggedIn}
               />
             </Route>
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/profile">
@@ -265,6 +266,7 @@ function App() {
                 onCardLike={handleCardLike}
                 onLogOut={handleLogOut}
                 onEditModal={handleEditModal}
+                isLoggedIn={isLoggedIn}
               />
             </ProtectedRoute>
           </Switch>
