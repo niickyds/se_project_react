@@ -21,7 +21,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import * as auth from "../../utils/auth.js";
 import * as api from "../../utils/api.js";
-import { getToken } from "../../utils/token.js";
+// import { getToken } from "../../utils/token.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -140,11 +140,14 @@ function App() {
 
   const handleProfileUpdate = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
-    api.editProfileData({ name, avatar }, token).then((res) => {
-      setCurrentUser(res);
-      console.log(res);
-      handleCloseModal();
-    });
+    api
+      .editProfileData({ name, avatar }, token)
+      .then((res) => {
+        setCurrentUser(res);
+        console.log(res);
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleDeleteCard = () => {
@@ -218,6 +221,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (!activeModal) return;
     const handleKeyDown = (evt) => {
       if (evt.key === "Escape" && activeModal !== "") {
         handleCloseModal();
@@ -229,12 +233,13 @@ function App() {
     };
   }, [activeModal]);
 
-  useEffect(() => {
-    const jwt = getToken();
+  useEffect((userData) => {
+    const jwt = localStorage.getItem("jwt");
     if (!jwt) {
       return;
     }
-  });
+    handleCurrentUser(userData);
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
