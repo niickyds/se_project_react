@@ -302,6 +302,7 @@ function App() {
             <DeleteItemModal
               handleCloseModal={handleCloseModal}
               deleteCard={handleDeleteCard}
+              onClose={handleCloseModal}
             />
           )}
           {activeModal === "register" && (
