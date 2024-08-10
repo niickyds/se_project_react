@@ -1,5 +1,8 @@
 import { processServerResponse } from "./api.js";
-export const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.geobattery.com"
+    : "http://localhost:3001";
 
 export function signUp({ name, avatar, email, password }) {
   return fetch(`${baseUrl}/signup`, {

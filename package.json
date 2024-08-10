@@ -1,5 +1,7 @@
 {
   "name": "se_project_react",
+  "homepage": "https://wtwr.geobattery.com",
+  "deploy": "npm run build && scp -r ./dist/* adeptexotica@wtwr.geobattery.com:/home/adeptexotica/frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
